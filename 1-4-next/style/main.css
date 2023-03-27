@@ -44,9 +44,7 @@ section {}
 section .sec1 {background-image:url(../images/main_bg_01.jpg);
     background-attachment: fixed;}
 section .sec2 {background-image:  url(../images/main_bg_02_2.png), url(../images/main_bg_02_4.png), url(../images/main_bg_02_3.jpg);
-    background-position: center;
-    background-size: auto cover;
-background-attachment: scroll, scroll, fixed;}
+    background-size: auto cover;}
 section .sec3 {background-image:url(../images/main_bg_03.jpg);
     background-attachment: fixed;
 }
@@ -56,9 +54,14 @@ section > div {
     display:flex; flex-flow:column wrap; justify-content:center; color:#fff;
 }
 section > div:nth-child(2) {
+    background:
+    url(../images/main_bg_02_2.png),
+    url(../images/main_bg_02_4.png),
+    url(../images/main_bg_02_3.jpg);
     background-repeat:no-repeat;
-    background-size:8%, 100%, cover;
-    background-position:50%, 15%, center;
+    background-size:auto, auto, cover;
+    background-position:center;
+    background-attachment: scroll, scroll, fixed;
 }
 section > div h1 {
     font-family: 'Pattaya', sans-serif;
