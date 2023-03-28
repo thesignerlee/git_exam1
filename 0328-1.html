@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0328-1</title>
+    <style>
+        * {margin:0; padding:0; box-sizing: border-box;}
+        .box {
+            width:100px; height:100px; border:2px solid #000;
+            background: coral; text-align: center; line-height: 100px;
+        }
+        .box:nth-child(1) {animation:width 0.5s both;}
+        .box:nth-child(2) {animation:width 1s alternate infinite;}
+        .box:nth-child(3) {animation:rotate_opacity 0.5s alternate 2;}
+        .box:nth-child(4) {animation:rotate_opacity 1s alternate-reverse infinite;} /* 반대방향에서 시작해서 무한반복 */
+        .box:nth-child(5) .box {transition: background-color 0.5s 1s, color 1s;} /* 바뀌는 건 box이므로 부모인 5가 아니라 box에 줘야 함, box에 변화가 생기면 애니메이션이 들어가라는 지시, 속성 하나만 특정해서 변하게 하고 싶으면 부분, 아니면 all, 시간차를 두고 복수를 움직이게 만드록 싶을 때는 , 표시. 딜레이를 두고 따로 시작시킬 수도 있음*/
+        .box:nth-child(5):hover .box {
+            background-color: yellow;
+            color: red;
+        } /* 5번째에 마우스를 올렸을 때 안의 자식을 움직이게 만들고 싶을 때, F에도 마우스 올리면 바뀜. E의 공간이 자식의 공간까지 포함되기 때문, 자연스럽지 않음 */
+        @keyframes width {
+            0% {width:100px;}
+            100% {width:200px;}
+        }
+        @keyframes rotate_opacity {
+            0% {opacity:0; transform: translateX(0) rotate(0)}/* 트랜스레이트는 앞에 쓰느냐 뒤에 쓰느냐에 따라 결과가 달라지므로 앞에 쓰는 게 좋음 */
+            100% {opacity:1; transform: translateX(200px)rotate(20deg)}
+        }
+        /* hover(마우스 올렸을 때에만 동작), transition VS animation(마우스 안 올려도 사용), Keyframes */
+        /* animation, Keyframes 마우스 이벤트 없이 애니메이션 재생 가능 */
+        /* animation, Keyframes + JS 다양한 이벤트와 활용한 재생 가능 */
+        /* hover, transition 마우스 올렸을 때만 애니메이션 재생 가능 */
+    </style>
+</head>
+<body>
+    <div class="box">A</div>
+    <div class="box">B</div>
+    <div class="box">C</div>
+    <div class="box">D</div>
+    <div class="box">E
+        <div class="box">F</div>
+    </div>
+</body>
+</html>
